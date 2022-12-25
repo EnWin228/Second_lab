@@ -63,7 +63,6 @@ $posts = mysqli_query($db, "SELECT * FROM posts ORDER BY id DESC");
     <title>Chat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/http_stackpath.bootstrapcdn.com_bootstrap_4.3.1_css_bootstrap.css">
 </head>
 <body>
 <div class="container">
@@ -90,36 +89,20 @@ $posts = mysqli_query($db, "SELECT * FROM posts ORDER BY id DESC");
         <p><?php echo $row['dtime'];?></p>
         <div>
             <?php
-            // determine if user has already liked this post
+            
             $results = mysqli_query($db, "SELECT * FROM likes WHERE userid=1 AND postid=".$row['id']."");
 
             if (mysqli_num_rows($results) == 1 ): ?>
-                <!-- user already likes post -->
+                
                 <span class="unlike fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span>
                 <span class="like hide fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span>
             <?php else: ?>
-                <!-- user has not yet liked post -->
+               
                 <span class="like fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span>
                 <span class="unlike hide fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span>
             <?php endif ?>
 
             <span class="likes_count"><?php echo $row['likes']; ?> likes</span>
-        </div>
-
-            <input class="text-field__input" type="text" name="author" id="author<?php echo $row['id']; ?>" placeholder="Введите ваше имя...">
-            <input class="text-field__input" type="text" name="message" id="message<?php echo $row['id']; ?>" placeholder="Введите текст комментария...">
-            <input name="js" type="hidden">
-            <button class="btn btn-danger" type="submit" data-id="<?php echo $row['id']; ?>"> Отправить </button>
-
-       <?php $resultcom = mysqli_query($db, "SELECT * FROM comments WHERE post_id=".$row['id'].""); ?>
-        <div id="commentBlock">
-            <?php
-            $comment = mysqli_fetch_array($resultcom); /* В результирующий массив */
-            do{
-                echo "<div class='comment' style='border: 1px solid gray; margin-top: 1%; border-radius: 5px; padding: 0.5%;'>Автор: <strong>".$comment['author']."</strong><br>".$comment['text']."</div>"; // Выводим
-            }
-            while($comment = mysqli_fetch_array($resultcom));
-            ?>
         </div>
     </div>
     <?php echo '</ul>';?>
@@ -181,36 +164,6 @@ $posts = mysqli_query($db, "SELECT * FROM posts ORDER BY id DESC");
         });
     });
 
-    $(document).ready(function(){
-        $('.content_toggle').click(function(){
-            $('.content_block').toggleClass('hide');
-            if ($('.content_block').hasClass('hide')) {
-                $('.content_toggle').html('Подробнее');
-            } else {
-                $('.content_toggle').html('Скрыть');
-            }
-            return false;
-        });
-    });
-
-    $(document).ready(function() {
-        $(".btn-danger").click(function(){
-            var postid1 = $(this).data('id');// При нажатии на кнопку
-            var author = $("#author" + postid1).val(); // Получаем имя автора комментария
-            var message = $("#message"+ postid1).val();// Получаем само сообщение
-            $.ajax({ // Аякс
-                type: "POST", // Тип отправки "POST"
-                url: "./comments.php", // Куда отправляем(в какой файл)
-                data: {"author": author, "message": message, "postid1":postid1}, // Что передаем и под каким значением
-                cache: false, // Убираем кеширование
-                success: function(response){ // Если все прошло успешно
-                    var messageResp = ['Ваше сообщение отправлено','Сообщение не отправлено Ошибка базы данных','Нельзя отправлять пустые сообщения'];
-                    var resultStat = messageResp[Number(response)];
-                    if(response == 0){
-                        $("#author").val("");
-                        $("#message").val("");
-                        $("#commentBlock").append("<div class='comment'>Автор: <strong>"+author+"</strong><br>"+message+"</div>");}
-                    $("#resp").text(resultStat).show().delay(1500).fadeOut(800);}});return false;});});
 
     $(document).ready(function() {
         $(".btn-outline-dark").click(function(){
