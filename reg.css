@@ -1,0 +1,58 @@
+{box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+body{
+  height:auto;
+  background: linear-gradient(to top left, powderblue, pink);
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #E0FFFF;
+  outline: none;
+}
+hr {
+  border: 4px solid #E38916;
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+.regbt {
+  background:  linear-gradient(#F3AE0F, #E38916) #E38916;
+  font-size: 15pt;
+  color: black;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.regbt:hover {
+  background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+}
+.regbt:active {
+   background: linear-gradient(#f59500, #f5ae00) #f59500;
+}
+.error_message {
+	width: 230px;
+	font-size: 20px;
+	margin-left: 10px;
+	color: #FF0000;
+}
+
+.success_message {
+	font-size: 20px;
+	margin-left: 50px;
+	color: #10FA00;
+}
