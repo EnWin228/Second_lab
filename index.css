@@ -1,0 +1,52 @@
+
+.like, .unlike, .likes_count {
+    color: red;
+}
+.hide {
+    display: none;
+}
+.fa-thumbs-up, .fa-thumbs-o-up {
+    transform: rotateY(-180deg);
+    font-size: 1.3em;
+}
+body {
+    background-color: #1c1c1c!important;
+}
+
+.container {
+    margin-top: 50px;
+    width: 50%!important;
+}
+
+.posting {
+    background: #232324;
+    border: 3px solid #363636;
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+#list {
+    width: 60%;
+    float: left;
+    margin-right: 5%;
+}
+h1 {
+    color: #d9d9d9;
+    text-align: center;
+}
+
+.post {
+    padding: 10px 10px;
+    list-style: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    color: #d9d9d9;
+    background: #232324;
+}
+ul {
+    padding: 0 10px;
+}
+p{
+    text-align: right;
+}
