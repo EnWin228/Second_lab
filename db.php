@@ -1,3 +1,3 @@
 <?php
-$db = mysqli_connect ("localhost","root","mypass","notes2");
+$db = mysqli_connect ("localhost","root","","forum");
 ?>
