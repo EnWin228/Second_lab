@@ -68,10 +68,8 @@ $posts = mysqli_query($db, "SELECT * FROM posts ORDER BY id DESC");
 <div class="container">
     <h1> Анонимный чат </h1>
 
-    <form class = "posting" action="add.php" method="post" enctype="multipart/form-data">
+    <form class = "posting" action="add.php" method="post">
         <input required class="form-control" type="text" name="list" id ="list" placeholder="Введите текст поста...">
-        <input required class="btn btn-dark" type="file" name="file" id="file" accept="image/jpeg">
-<!--  <label class="custom-file-label" for="file">Выберите файл</label>-->
         <button class="btn btn-dark" type="submit" name="send"> Добавить </button>
     </form>
 </div>
@@ -84,8 +82,6 @@ $posts = mysqli_query($db, "SELECT * FROM posts ORDER BY id DESC");
         <div class="content_block hide" >
         <?php echo $row['text']; ?>
         </div>
-        <a class="content_toggle" href="#">Подробнее</a>
-        <img src="<?php echo $row['image']?>">
         <p><?php echo $row['dtime'];?></p>
         <div>
             <?php
